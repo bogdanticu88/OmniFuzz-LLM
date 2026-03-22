@@ -5,6 +5,14 @@
 
 **Adversarial Testing and Red-Teaming Framework for LLMs**
 
+[![CI](https://github.com/bogdanticu88/OmniFuzz-LLM/actions/workflows/ci.yml/badge.svg)](https://github.com/bogdanticu88/OmniFuzz-LLM/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-301%20passing-brightgreen)](tests/)
+[![OWASP LLM Top 10](https://img.shields.io/badge/OWASP-LLM%20Top%2010-red)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+[![NIST AI RMF](https://img.shields.io/badge/NIST-AI%20RMF-blue)](https://www.nist.gov/artificial-intelligence)
+[![MITRE ATLAS](https://img.shields.io/badge/MITRE-ATLAS-orange)](https://atlas.mitre.org/)
+
 OmniFuzz-LLM is a Python framework that helps security engineers and AI teams run structured adversarial tests against deployed LLM systems. It maps every finding to the OWASP LLM Top 10, generates compliance reports aligned to NIST AI RMF and MITRE ATLAS, and is built to be automated in CI/CD pipelines.
 
 It is aimed at teams that need to demonstrate due diligence around LLM security — not just consumer jailbreaks, but the enterprise attack surfaces that matter: RAG poisoning, tool-call abuse, PII leakage, multi-tenant isolation failures, hallucination under adversarial conditions, and credential harvesting.
