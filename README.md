@@ -15,7 +15,7 @@
 
 OmniFuzz-LLM is a Python framework that helps security engineers and AI teams run structured adversarial tests against deployed LLM systems. It maps every finding to the OWASP LLM Top 10, generates compliance reports aligned to NIST AI RMF and MITRE ATLAS, and is built to be automated in CI/CD pipelines.
 
-It is aimed at teams that need to demonstrate due diligence around LLM security — not just consumer jailbreaks, but the enterprise attack surfaces that matter: RAG poisoning, tool-call abuse, PII leakage, multi-tenant isolation failures, hallucination under adversarial conditions, and credential harvesting.
+It is aimed at teams that need to demonstrate due diligence around LLM security, not just consumer jailbreaks, but the enterprise attack surfaces that matter: RAG poisoning, tool-call abuse, PII leakage, multi-tenant isolation failures, hallucination under adversarial conditions, and credential harvesting.
 
 ---
 
