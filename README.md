@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/a7f71fa8-e06f-431c-886f-ccf2a3b39c7f)
+
 # OmniFuzz-LLM
 
 **Adversarial Testing and Red-Teaming Framework for LLMs**
