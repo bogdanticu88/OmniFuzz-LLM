@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OmniFuzz runtime artifacts
+.omnifuzz_checkpoints/
+*.checkpoint.json
+omnifuzz_report*.html
+omnifuzz_report*.json
+omnifuzz_report*.md
+results.json
+report.html
+report.md
+compliance_report.*
+
+# Config with secrets
+omnifuzz.yaml
+*.env
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
