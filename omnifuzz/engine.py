@@ -383,6 +383,29 @@ class Reporter:
   <td style="padding:.6rem 1rem;border-bottom:1px solid #2a2a3e">{sev_badge(worst)}</td>
 </tr>"""
 
+        # Pre-compute HTML fragments to avoid nested f-strings (Python 3.11 compat)
+        severity_cards = "".join(
+            '<div style="background:#1a1a2e;border-radius:8px;padding:1rem;text-align:center'
+            ';border-top:3px solid ' + SEVERITY_COLORS[s] + '">'
+            '<div style="font-size:2rem;font-weight:800;color:' + SEVERITY_COLORS[s] + '">'
+            + str(sev.get(s, 0)) +
+            '</div><div style="font-size:.8rem;opacity:.7;text-transform:uppercase'
+            ';letter-spacing:.05em">' + s + '</div></div>'
+            for s in ["critical", "high", "medium", "low"]
+        )
+        owasp_section = (
+            '<h2 style="margin-bottom:1rem;font-size:1.1rem">OWASP LLM Top 10 Coverage</h2>'
+            '<div style="background:#1a1a2e;border-radius:8px;overflow:hidden;margin-bottom:2rem">'
+            '<table style="width:100%;border-collapse:collapse">'
+            '<thead><tr style="background:#12121e">'
+            '<th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">OWASP REF</th>'
+            '<th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">CATEGORIES</th>'
+            '<th style="padding:.6rem 1rem;text-align:center;font-size:.8rem;opacity:.6">FINDINGS</th>'
+            '<th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">WORST SEVERITY</th>'
+            '</tr></thead><tbody>' + owasp_rows + '</tbody></table></div>'
+            if owasp_rows else ""
+        )
+
         html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -412,10 +435,7 @@ class Reporter:
 
   <!-- Metrics Cards -->
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem">
-    {''.join(f"""<div style="background:#1a1a2e;border-radius:8px;padding:1rem;text-align:center;border-top:3px solid {SEVERITY_COLORS[s]}">
-      <div style="font-size:2rem;font-weight:800;color:{SEVERITY_COLORS[s]}">{sev.get(s,0)}</div>
-      <div style="font-size:.8rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em">{s}</div>
-    </div>""" for s in ["critical","high","medium","low"])}
+    {severity_cards}
     <div style="background:#1a1a2e;border-radius:8px;padding:1rem;text-align:center;border-top:3px solid #818cf8">
       <div style="font-size:2rem;font-weight:800;color:#818cf8">{summary['total_payloads']}</div>
       <div style="font-size:.8rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em">Total Payloads</div>
@@ -431,7 +451,7 @@ class Reporter:
   </div>
 
   <!-- OWASP Table -->
-  {'<h2 style="margin-bottom:1rem;font-size:1.1rem">OWASP LLM Top 10 Coverage</h2><div style="background:#1a1a2e;border-radius:8px;overflow:hidden;margin-bottom:2rem"><table style="width:100%;border-collapse:collapse"><thead><tr style="background:#12121e"><th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">OWASP REF</th><th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">CATEGORIES</th><th style="padding:.6rem 1rem;text-align:center;font-size:.8rem;opacity:.6">FINDINGS</th><th style="padding:.6rem 1rem;text-align:left;font-size:.8rem;opacity:.6">WORST SEVERITY</th></tr></thead><tbody>' + owasp_rows + '</tbody></table></div>' if owasp_rows else ''}
+  {owasp_section}
 
   <!-- Findings -->
   <h2 style="margin-bottom:1rem;font-size:1.1rem">Findings</h2>
