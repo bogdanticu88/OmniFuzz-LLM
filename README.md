@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/a7f71fa8-e06f-431c-886f-ccf2a3b39c7f)
+![image](https://github.com/user-attachments/assets/5fe0f4ab-b215-413e-aa78-36d2b2a50934)
+
 
 # OmniFuzz-LLM
 
